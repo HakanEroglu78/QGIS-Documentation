@@ -41,26 +41,20 @@ code.
 
 .. _pythonconsole:
 
-Scripting in the Python Console
+Python Konsoluda Kodlama
 ===============================
 
-QGIS provides an integrated :ref:`Python console <console>` for scripting.
-It can be opened from the :menuselection:`Plugins --> Python Console` menu:
+QGIS programı, kodlama için bir :ref:`Python console <console>` içerir.
+Konsol :menuselection:`Plugins --> Python Console` menüsünden açılabilir:
 
 .. figure:: img/console.png
    :align: center
    :width: 40em
 
-   QGIS Python console
+   QGIS Python konsolu
 
-The screenshot above illustrates how to get the layer currently
-selected in the layer list, show its ID and optionally, if it is a
-vector layer, show the feature count.
-For interaction with the QGIS environment, there is an :data:`iface`
-variable, which is an instance of
-:class:`QgisInterface <qgis.gui.QgisInterface>`.
-This interface allows access to the map canvas, menus, toolbars and
-other parts of the QGIS application. 
+Yukarıdaki ekran görüntüsündeki kodda katman listesinde seçili katmanı bir değişkene atamayı, id değerini, bir vektör katmanı ise kayıtlı nesne sayısını göstermeyi içeriyor. 
+QGIS program arayüzü ile etkileşim için :data:`iface` değişkeni kullanılır, :class:`QgisInterface <qgis.gui.QgisInterface>` sınıfındadır. :data:`iface` ile çizim alanına, menülere, araç kutularına ve diğer QGIS program parçalarına ulaşabilirsiniz.
 
 For user convenience, the following statements are executed
 when the console is started (in the future it will be possible to set
