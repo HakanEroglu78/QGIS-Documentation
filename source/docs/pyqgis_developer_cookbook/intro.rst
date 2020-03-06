@@ -162,47 +162,42 @@ below.
 
 .. _standalonescript:
 
-Using PyQGIS in standalone scripts
+PyQGIS bağımsız kodları kullanma
 ----------------------------------
 
-To start a standalone script, initialize the QGIS resources at the
-beginning of the script:
+Kodun başlangıcında QGIS kaynak kodlarına çağırma: 
 
 ::
 
   from qgis.core import *
 
-  # Supply path to qgis install location
+  # QGIS yükleme konumunu gösterme
   QgsApplication.setPrefixPath("/path/to/qgis/installation", True)
 
-  # Create a reference to the QgsApplication.  Setting the
-  # second argument to False disables the GUI.
+  # QgsApplication referansını oluşturun. İkinci argüman olarak
+  # False ayarı GUI arayüzünü devre dışı bırakır. 
   qgs = QgsApplication([], False)
 
-  # Load providers
+  # Kodu başlat
   qgs.initQgis()
 
-  # Write your code here to load some layers, use processing
-  # algorithms, etc.
+  # Kodunuzu buraya yazın. KAtmanları yükleyin, işlem Write your code here to load some layers, use processing
+  # algoritmalarını işletin, v.s.
 
-  # Finally, exitQgis() is called to remove the
-  # provider and layer registries from memory
+  # Son olarak, exitQgis() fonksiyonunu çağırın, 
+  # hafızayı boşaltma işlemini tetikleyin. 
 
   qgs.exitQgis()
 
-First we import the :mod:`qgis.core` module and configure
-the prefix path. The prefix path is the location where QGIS is
-installed on your system. It is configured in the script by calling
-the :meth:`setPrefixPath <qgis.core.QgsApplication.setPrefixPath>` method.
-The second argument of
-:meth:`setPrefixPath <qgis.core.QgsApplication.setPrefixPath>`
-is set to ``True``, specifying that default paths are to be
-used.
+Öncelikle :mod:`qgis.core` modülünü ayarlayın ve çağırın. 
+Modül çalışma konumu ayarlaması için QGIS in bilgisayarınızdaki yükleme yerini bulun. 
+Yükleme yeri bulma kodu :meth:`setPrefixPath <qgis.core.QgsApplication.setPrefixPath>` yöntemi ile çağrılır. 
+:meth:`setPrefixPath <qgis.core.QgsApplication.setPrefixPath>` metodunun 
+ikinci argümanını ``True`` olarak ayarlayarak ön ayarlı yolu kulanacağınızı belirtirsiniz. 
 
-The QGIS install path varies by platform; the easiest way to find it
-for your system is to use the :ref:`pythonconsole` from within
-QGIS and look at the output from running
-``QgsApplication.prefixPath()``.
+QGIS yükleme konumu işletim sistemine bağlı olarak değişir. 
+Yükleme konumunu bulmanın en kolay yolu :ref:`pythonconsole` içinden 
+``QgsApplication.prefixPath()`` komutunu çalıştırarak çıktıya bakmaktır.
 
 After the prefix path is configured, we save a reference to
 ``QgsApplication`` in the variable ``qgs``. The second argument is set
@@ -215,7 +210,7 @@ ready to write the rest of the script. Finally, we wrap up by calling
 from memory.
 
 
-Using PyQGIS in custom applications
+PyQGIS kodlarını özel bir program için kullanma
 -----------------------------------
 
 The only difference between :ref:`standalonescript` and a custom PyQGIS
