@@ -56,88 +56,70 @@ Konsol :menuselection:`Plugins --> Python Console` menüsünden açılabilir:
 Yukarıdaki ekran görüntüsündeki kodda katman listesinde seçili katmanı bir değişkene atamayı, id değerini, bir vektör katmanı ise kayıtlı nesne sayısını göstermeyi içeriyor. 
 QGIS program arayüzü ile etkileşim için :data:`iface` değişkeni kullanılır, :class:`QgisInterface <qgis.gui.QgisInterface>` sınıfındadır. :data:`iface` ile çizim alanına, menülere, araç kutularına ve diğer QGIS program parçalarına ulaşabilirsiniz.
 
-For user convenience, the following statements are executed
-when the console is started (in the future it will be possible to set
-further initial commands)
+Kullanıcı kolaylığı için, aşağıdaki kodlar konsol açılır açılmaz çalıştırılır. (ileride farklı komutların otomatik çalıştırılabilmesini ayarlamak mümkün olacaktır.)
 
 ::
 
   from qgis.core import *
   import qgis.utils
 
-For those which use the console often, it may be useful to set a
-shortcut for triggering the console (within
+Konsolu sık ullananlar için klavye kısayolu ayrlamak mümkündür. (menüde
 :menuselection:`Settings --> Keyboard shortcuts...`)
 
 .. index:: Python; Plugins
 
-Python Plugins
+Python Eklentileri
 ==============
 
-The functionality of QGIS can be extended using plugins.
-Plugins can be written in Python.
-The main advantage over C++ plugins is simplicity of
-distribution (no compiling for each platform) and easier
-development.
+QGIS işlevleri eklentilerle genişletilebilir, yeni özellikler eklenebilir. C++ eklentilerine göre Python eklentilerinin avantajı farklı platformlarda kolayca çalışabilmesi, derlenebilmesidir.
 
-Many plugins covering various functionality have been written since
-the introduction of Python support. The plugin installer allows users
-to easily fetch, upgrade and remove Python plugins.
-See the `Python Plugins <https://plugins.qgis.org/>`_ page for more
-information about plugins and plugin development.
+Python desteği verilmeye başlandığından bu yana birçok eklenti yazılmıştır. Eklenti yükleyici, kullanıcıların eklentileri kolayca yüklemesini, güncellemesini, kaldırmasını sağlar.
+`Python Plugins <https://plugins.qgis.org/>`_ sayfasında detaylı eklenti bilgilerine ve geliştirme ortamı bilgilerine ulaşabilirsiniz. 
 
-Creating plugins in Python is simple, see :ref:`developing_plugins`
-for detailed instructions.
+Python içinde eklenti oluşturmak kolaydır, detaylı bilgi için :ref:`developing_plugins`
+sayfasına bakınız..
 
 .. note::
 
-    Python plugins are also available for QGIS server.
-    See :ref:`server_plugins` for further details.
+    Python eklentileri, ayrıdca QGIS sunucu versiyonu için de mevcuttur. Detaylı bilgi için :ref:`server_plugins` sayfasına bakınız.
 
 
 .. index::
   pair: Python; Startup
 
-Running Python code when QGIS starts
+QGIS başlangıcında Python kodunu çalıştırma
 ====================================
 
-There are two distinct methods to run Python code every time QGIS
-starts.
+Program açıldığında otomatik kod çalıştırmanın iki farklı yolu vardır. 
 
-1. Creating a startup.py script
+1. startup.py kodu oluşturarak.
 
-2. Setting the ``PYQGIS_STARTUP`` environment variable to an
-   existing Python file
+2. ``PYQGIS_STARTUP`` ortam değişkenine bir py dosyası atamak. 
 
 
-The :file:`startup.py` file
+ :file:`startup.py` dosyası
 ----------------------------
 
-Every time QGIS starts, the user's Python home directory
+QGIS her başladığında Python ana çalışma dizinine bakar
 
 * Linux: :file:`.local/share/QGIS/QGIS3`
 * Windows: :file:`AppData\\Roaming\\QGIS\\QGIS3`
 * macOS: :file:`Library/Application Support/QGIS/QGIS3`
 
-is searched for a file named :file:`startup.py`. If that file exists, it
-is executed by the embedded Python interpreter.
+:file:`startup.py` dosyasını arar. Dosya mevcutsa programın içinde gelen birleşik python modülüyle çalıştırır.
 
-.. note:: The default path depends on the operating system. To find the
-  path that will work for you, open the Python Console and run
-  ``QStandardPaths.standardLocations(QStandardPaths.AppDataLocation)``
-  to see the list of default directories.
+.. note:: Varsayılan QGIS program yolu işletim sistmine göre değişiklik gösterir. Python konsolunu açın ve 
+  ``QStandardPaths.standardLocations(QStandardPaths.AppDataLocation)`` kodunu çalıştırın, programın kurulu olduğu ana çalışma dizinlerinin listesini konsola yazdıracaktır.
 
 .. index::
   pair: Environment; PYQGIS_STARTUP
 
-The PYQGIS_STARTUP environment variable
+The PYQGIS_STARTUP ortam değişkeni
 ---------------------------------------
 
-You can run Python code just before QGIS initialization completes by
-setting the ``PYQGIS_STARTUP`` environment variable to the path of an
-existing Python file.
+``PYQGIS_STARTUP`` ortam değişkenine bir dosya yolu ataması yaparak QGIS ekrana gelmeden önce atanan py dosyasının çalışmasını sağlayabilirsiniz. 
 
-This code will run before QGIS initialization is complete.
+Bu kod QGIS başlamadan çalışır. 
 This method is very useful for cleaning
 sys.path, which may have undesireable paths, or for isolating/loading
 the initial environment without requiring a virtual environment, e.g.
@@ -149,7 +131,7 @@ homebrew or MacPorts installs on Mac.
 
 .. _pythonapplications:
 
-Python Applications
+Python Uygulamaları
 ===================
 
 It is often handy to create  scripts for automating processes.
