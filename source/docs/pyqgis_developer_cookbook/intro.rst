@@ -4,32 +4,27 @@
 Introduction
 ************
 
-This document is intended to be both a tutorial and a reference
-guide. While it does not list all possible use cases, it should
-give a good overview of the principal functionality.
+Bu dökümanda aynı anda eğitim ve referans kaynağı olması hedeflenmiştir. Tüm kullanım senaryolarını gösteremesekde genel kullanım yöntemlerini göstermeyi hedefledik.
 
 .. contents::
    :local:
 
-Python support was first introduced in QGIS 0.9.
-There are several ways to use Python in QGIS Desktop
-(covered in the following sections):
+Python desteği ilk olarak QGIS 0.9 versiyonunda başladı.
+QGIS Masaüstü versiyonunda Python kullanmanın birçok yolu vardır.
+(bu yöntemler):
 
-* Issue commands in the Python console within QGIS
-* Create and use plugins
-* Automatically run Python code when QGIS starts
-* Create custom applications based on the QGIS API
+* QGIS içinde Python konsolundan komutlar verilebilir
+* Eklentiler oluşturarak ve kullanarak
+* QGIS programını çalıştırdığınız anda otomatik çalışacak Python kodları ile
+* QGIS API'si kullanan özelleşmiş programlar yazarak dışarıdan
 
-Python bindings are also available for QGIS Server, including
-Python plugins (see :ref:`server_plugins`)
-and Python bindings that can be used to embed QGIS Server into a
-Python application.
+Python eklentileri ayrıca QGIS Server versiyonunda çalışabilir, eklentilere erişim için (bkz. :ref:`server_plugins`)
+Python eklentileri gömülü QGIS Server Python programndan çalıştırılabilir.
 
 .. index:: API
 
-There is a :api:`complete QGIS API <>` reference that
-documents the classes from the QGIS libraries. :pyqgis:`The Pythonic QGIS API
-(pyqgis) <>` is nearly identical to the C++ API.
+Referans sınıf ve kütüphanelere :api:`QGIS API <>` linkinden bakabilirsiniz. 
+:pyqgis:`Pythonic QGIS API (pyqgis) <>` arayüzü,  C++ API eklentisi ile neredeyse aynıdır.
 
 A good resource for learning how to perform common tasks is to
 download existing plugins from the
