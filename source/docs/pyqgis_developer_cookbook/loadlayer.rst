@@ -1,10 +1,10 @@
 .. _loadlayerpy:
 
 **************
-Loading Layers
+Katmanları Yükleme
 **************
 
-The code snippets on this page needs the following imports:
+Sayfadaki kodlar aşağıdaki kod çağrısı ile başlamalı.
 
 .. code-block:: python
 
@@ -16,18 +16,15 @@ The code snippets on this page needs the following imports:
 .. contents::
    :local:
 
-Let's open some layers with data. QGIS recognizes vector and raster layers.
-Additionally, custom layer types are available, but we are not going to discuss
-them here.
+Veri içeren birkaç katman açalım. QGIS vektör ve raster katmanlarıyla çalışır. Özel katman tipleri de desteklenmektedir. Bu yazıda özel katman türlerinden bahsetmeyeceğiz.
 
 .. index::
   pair: Vector layers; Loading
 
-Vector Layers
+Vektör Katmanları
 =============
 
-To create a vector layer instance, specify layer's data source identifier, name for the
-layer and provider's name:
+Bir vektör katmanı sınıfı örneği oluştuup veri kaynağı, katman adı, katman sağlayıcısını belirtelim.:
 
 .. code-block:: python
 
@@ -41,10 +38,7 @@ layer and provider's name:
  if not vlayer.isValid():
      print("Layer failed to load!")
 
-The data source identifier is a string and it is specific to each vector data
-provider. Layer's name is used in the layer list widget. It is important to
-check whether the layer has been loaded successfully. If it was not, an invalid
-layer instance is returned.
+"data_source" tanımlayıcısı bir  metindir, veri kaynağının konumunu gösterir. "layer_name" katman bölmesinde gösterilecek olan isimdir. Katmanın yüklendiğini göstereceğindne önemlidir. Katman yüklenemezse hatalı katman örneği geri döndürülecektir. 
 
 For a geopackage vector layer:
 
