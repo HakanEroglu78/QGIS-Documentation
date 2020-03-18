@@ -1,24 +1,20 @@
 .. index:: Plugins; User interaction
 
 ***************************
-Communicating with the user
+Kullanıcı iletişim arayüzü
 ***************************
 
 .. contents::
    :local:
 
-This section shows some methods and elements that should be used to communicate
-with the user, in order to keep consistency in the User Interface.
+Bu bölüm kullanıcı ile iletişim kurmamızı sağlayan arayüzlerin kullanımını içerir. 
 
-Showing messages. The QgsMessageBar class
+Mesaj gösterme. QgsMessageBar sınıfı.
 =========================================
 
-Using message boxes can be a bad idea from a user experience point of view. For
-showing a small info line or a warning/error messages, the QGIS message bar is
-usually a better option.
+Mesaj kutularını kullanmak UX (User Experience; Kullanıcı deneyimi) kuralları açısından kötü bir fikirdir. Uyarı ve hata mesajlarını göstermek için bilgi satırını kullanmalıyız. 
 
-Using the reference to the QGIS interface object, you can show a message in the
-message bar with the following code
+QGIS arayüzünde mesaj satırı kısmını kullanarak mesaj göstermek için kullanılacak kod:
 
 .. code-block:: python
 
@@ -30,9 +26,9 @@ message bar with the following code
    :align: center
    :width: 40em
 
-   QGIS Message bar
+   QGIS Mesaj çubuğu
 
-You can set a duration to show it for a limited time
+Mesaj gösterim süresini ayarlayarak ne kadar süre ile gösterileceğini ayarlayabilirsiniz.
 
 .. code-block:: python
 
@@ -43,25 +39,22 @@ You can set a duration to show it for a limited time
    :align: center
    :width: 40em
 
-   QGIS Message bar with timer
+   QGIS Mesaj çubuğu, zamanlanmış
 
-The examples above show an error bar, but the ``level`` parameter can be used
-to creating warning messages or info messages, using the
-:class:`Qgis.MessageLevel <qgis.core.Qgis.MessageLevel>` enumeration. You can use up to 4 different levels:
+Yukarıdaki örnekte hata mesajı gösterilir, fakat ``level`` parametresi uyarı veya bilgi mesajı tipi :class:`Qgis.MessageLevel <qgis.core.Qgis.MessageLevel>` seçenekleri ile gösterilir. Dört farklı seviye öntanımlıdır:
 
-0. Info
-1. Warning
-2. Critical
-3. Success
+0. Bilgi
+1. Uyarı
+2. Kritik
+3. Başarılı
 
 .. figure:: img/infobar.png
    :align: center
    :width: 40em
 
-   QGIS Message bar (info)
+   QGIS Mesaj çubuğu (bilgi)
 
-Widgets can be added to the message bar, like for instance a button to show
-more info
+Bileşenler mesaj çubuğuna eklenebilir. Örneğin daha fazla bilgi göstermek için bir düğme gibi:
 
 .. code-block:: python
 
@@ -80,7 +73,7 @@ more info
    :align: center
    :width: 40em
 
-   QGIS Message bar with a button
+   QGIS Mesaj çubuğu bir düğme eklenmiş halde
 
 You can even use a message bar in your own dialog so you don't have to show a
 message box, or if it doesn't make sense to show it in the main QGIS window
