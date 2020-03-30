@@ -7,14 +7,14 @@ Kullanıcı iletişim arayüzü
 .. contents::
    :local:
 
-Bu bölüm kullanıcı ile iletişim kurmamızı sağlayan arayüzlerin kullanımını içerir. 
+Bu bölüm kullanıcı ile iletişim kurmamızı sağlayan metod ve bileşenlerin kullanımını içerir.
 
 Mesaj gösterme. QgsMessageBar sınıfı.
 =========================================
 
-Mesaj kutularını kullanmak UX (User Experience; Kullanıcı deneyimi) kuralları açısından kötü bir fikirdir. Uyarı ve hata mesajlarını göstermek için bilgi satırını kullanmalıyız. 
+Mesaj kutuları kullanarak mesajlarımızı göstermek kullanıcı açısından kötü bir deneyim oluşturur. Bunun yerine uyarı ve hata mesajlarını bilgi çubuğu, mesaj satırı bölmesinde göstermek QGIS için daha mantıklı bir yöntemdir. Toplu işlemlerde yüzlerce hata ve uyarı mesajı oluşabilir.
 
-QGIS arayüzünde mesaj satırı kısmını kullanarak mesaj göstermek için kullanılacak kod:
+QGIS arayüzünde mesaj satırı kısmını kullanarak mesaj göstermek için kullanılacak kod örneği:
 
 .. code-block:: python
 
@@ -28,7 +28,7 @@ QGIS arayüzünde mesaj satırı kısmını kullanarak mesaj göstermek için ku
 
    QGIS Mesaj çubuğu
 
-Mesaj gösterim süresini ayarlayarak ne kadar süre ile gösterileceğini ayarlayabilirsiniz.
+Mesajların belirli bir süre gösterilip ardından mesaj çubuğunun kaybolmasını sağlamak için süre sınırı koyabilirsiniz.
 
 .. code-block:: python
 
@@ -39,9 +39,9 @@ Mesaj gösterim süresini ayarlayarak ne kadar süre ile gösterileceğini ayarl
    :align: center
    :width: 40em
 
-   QGIS Mesaj çubuğu, zamanlanmış
+   QGIS Mesaj çubuğu, zaman sınırlaması ile
 
-Yukarıdaki örnekte hata mesajı gösterilir, fakat ``level`` parametresi uyarı veya bilgi mesajı tipi :class:`Qgis.MessageLevel <qgis.core.Qgis.MessageLevel>` seçenekleri ile gösterilir. Dört farklı seviye öntanımlıdır:
+Yukarıdaki örnekte hata mesajı görülmekte, fakat ``level`` parametresi uyarı veya bilgi mesajı tipi olabilir. :class:`Qgis.MessageLevel <qgis.core.Qgis.MessageLevel>` seçenekleri kullanılabilir. 4 farklı seviye öntanımlıdır:
 
 0. Bilgi
 1. Uyarı
@@ -54,7 +54,7 @@ Yukarıdaki örnekte hata mesajı gösterilir, fakat ``level`` parametresi uyar�
 
    QGIS Mesaj çubuğu (bilgi)
 
-Bileşenler mesaj çubuğuna eklenebilir. Örneğin daha fazla bilgi göstermek için bir düğme gibi:
+Mesaj çubuğuna araçlar eklenebilir, örneğin daha fazla bilgi göstermek için bir buton
 
 .. code-block:: python
 
@@ -73,10 +73,9 @@ Bileşenler mesaj çubuğuna eklenebilir. Örneğin daha fazla bilgi göstermek 
    :align: center
    :width: 40em
 
-   QGIS Mesaj çubuğu bir düğme eklenmiş halde
+   Butonlu bir QGIS Mesaj çubuğu
 
-You can even use a message bar in your own dialog so you don't have to show a
-message box, or if it doesn't make sense to show it in the main QGIS window
+Bu şekilde mesaj çubuğunu kendi mesaj kutunuzu göstermek için kullanabilirsiniz yada mesaj kutusu göstermek zorunlu değilse kullanılabilir. 
 
 .. code-block:: python
 
@@ -101,14 +100,13 @@ message box, or if it doesn't make sense to show it in the main QGIS window
    :align: center
    :width: 40em
 
-   QGIS Message bar in custom dialog
+   QGIS, özel bileşenli mesaj çubuğu
 
 
-Showing progress
+İlerleme durumu gösterme
 ================
 
-Progress bars can also be put in the QGIS message bar, since, as we have seen,
-it accepts widgets. Here is an example that you can try in the console.
+İlerleme durum çubukları QGIS mesaj çubuğu içinde gösterilebilir. İşte burada konsolda deneyebileceğiniz örnek bir kod.
 
 .. code-block:: python
 
@@ -128,8 +126,7 @@ it accepts widgets. Here is an example that you can try in the console.
 
     iface.messageBar().clearWidgets()
 
-Also, you can use the built-in status bar to report progress, as in the next
-example:
+Ayrıca entegre ilerleme durum çubuğunu kullanabilirsiniz. İşte sonraki örnek kod:
 
 .. code-block:: python
 
@@ -149,11 +146,10 @@ example:
  iface.statusBarIface().clearMessage()
 
 
-Logging
+Loglama
 =======
 
-You can use the QGIS logging system to log all the information that you want to
-save about the execution of your code.
+QGIS loglama sistemini kullanarak kodunuzun işletilme sürecini kaydettirebilirsiniz. 
 
 .. code-block:: python
 
@@ -164,21 +160,14 @@ save about the execution of your code.
 
 .. warning::
 
- Use of the Python ``print`` statement is unsafe to do in any code which may be
- multithreaded. This includes **expression functions**, **renderers**,
- **symbol layers** and **Processing algorithms** (amongst others). In these
- cases you should always use thread safe classes (:class:`QgsLogger <qgis.core.QgsLogger>`
- or :class:`QgsMessageLog <qgis.core.QgsMessageLog>`) instead.
+Python ``print`` komutunu kullanmak çoklu işlemlerin çalışmasında sorun oluşturur. Aynı şekilde **expression functions**, **renderers**, **symbol layers** ve **Processing algorithms** (ve diğer) fonksiyonlar içinde geçerlidir. Bu durumda her zaman güvenli sınıflar olan (:class:`QgsLogger <qgis.core.QgsLogger>` veya :class:`QgsMessageLog <qgis.core.QgsMessageLog>`) kullanmalısınız.
 
 
 .. note::
 
-   You can see the output of the :class:`QgsMessageLog <qgis.core.QgsMessageLog>`
-   in the :ref:`log_message_panel`
+   :class:`QgsMessageLog <qgis.core.QgsMessageLog>` sınıfının çıktılarını  :ref:`log_message_panel` içerisinde görebilirsiniz.
 
 .. note::
 
- * :class:`QgsLogger <qgis.core.QgsLogger>` is for messages for debugging /
-   developers (i.e. you suspect they are triggered by some broken code)
- * :class:`QgsMessageLog <qgis.core.QgsMessageLog>` is for messages to
-   investigate issues by sysadmins (e.g. to help a sysadmin to fix configurations)
+ * :class:`QgsLogger <qgis.core.QgsLogger>` mesajlaşma ve yazılımcılar için hata arama içindir (hatalı bir kodun tetiklendiğinden şüphelendiğiniz durumlar gibi)
+ * :class:`QgsMessageLog <qgis.core.QgsMessageLog>` sysadmin grubu için problemleri çözmesi amacıyla mesajlar gösterir (sysadmin' lerin ayarları düzelmesi gibi)
