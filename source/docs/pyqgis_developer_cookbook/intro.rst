@@ -1,10 +1,10 @@
 .. _introduction:
 
 ************
-Introduction
+Başlangıç
 ************
 
-Bu dökümanda aynı anda eğitim ve referans kaynağı olması hedeflenmiştir. Tüm kullanım senaryolarını gösteremesekde genel kullanım yöntemlerini göstermeyi hedefledik.
+Bu dökümanın aynı anda eğitim ve referans kaynağı olması hedeflenmiştir. Tüm kullanım senaryolarını gösterilmesede genel kullanım yöntemlerini göstermesi hedeflenmiştir.
 
 .. contents::
    :local:
@@ -13,10 +13,10 @@ Python desteği ilk olarak QGIS 0.9 versiyonunda başladı.
 QGIS Masaüstü versiyonunda Python kullanmanın birçok yolu vardır.
 (bu yöntemler):
 
-* QGIS içinde Python konsolundan komutlar verilebilir
+* QGIS içinde Python konsolundan komutlarla
 * Eklentiler oluşturarak ve kullanarak
 * QGIS programını çalıştırdığınız anda otomatik çalışacak Python kodları ile
-* QGIS API'si kullanan özelleşmiş programlar yazarak dışarıdan
+* QGIS API'si kullanan özelleşmiş programlar yazarak
 
 Python eklentileri ayrıca QGIS Server versiyonunda çalışabilir, eklentilere erişim için (bkz. :ref:`server_plugins`)
 Python eklentileri gömülü QGIS Server Python programndan çalıştırılabilir.
