@@ -38,7 +38,7 @@ Bir vektör katmanı sınıfı örneği oluştuup veri kaynağı, katman adı, k
  if not vlayer.isValid():
      print("Layer failed to load!")
 
-"data_source" tanımlayıcısı bir  metindir, veri kaynağının konumunu gösterir. "layer_name" katman bölmesinde gösterilecek olan isimdir. Katmanın yüklendiğini göstereceğindne önemlidir. Katman yüklenemezse hatalı katman örneği geri döndürülecektir. 
+``data_sourc`` tanımlayıcısı bir  metindir, veri kaynağının konumunu gösterir. "layer_name" katman bölmesinde gösterilecek olan isimdir. Katmanın yüklendiğini göstereceğindne önemlidir. Katman yüklenemezse hatalı katman örneği geri döndürülecektir. 
 
 For a geopackage vector layer:
 
